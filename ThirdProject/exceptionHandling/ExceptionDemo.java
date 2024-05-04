@@ -1,6 +1,5 @@
 package exceptionHandling;
 
-import java.util.NoSuchElementException;
 import java.util.Scanner;
 
 public class ExceptionDemo 
@@ -25,10 +24,14 @@ public class ExceptionDemo
 				System.out.println(c);
 				break;
 			} 
-			catch (Exception e) 
+			catch (ArithmeticException e) 
 			{
 				e.printStackTrace();
-			} 			
+			} 	
+			finally 
+			{
+				System.out.println("iam final Block");
+			}
 		}
 	}
 }
