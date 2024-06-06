@@ -1,0 +1,12 @@
+init the properties files.....
+opened the Browser :chrome
+Navigated to application : https://www.amazon.in/
+selected the option Books By using locator : searchDropdownBox
+Entered the text Harry Potter  By using locator :twotabsearchtextbox
+Clicked on Button By using locator : //*[@id="nav-search-submit-button"]
+init the properties files.....
+opened the Browser :chrome
+Navigated to application : https://www.amazon.in/
+selected the option Books By using locator : searchDropdownBox
+Entered the text Harry Potter  By using locator :twotabsearchtextbox
+Clicked on Button By using locator : //*[@id="nav-search-submit-button"]
