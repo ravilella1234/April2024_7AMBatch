@@ -1,22 +1,28 @@
 package selenium;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.time.Duration;
+import java.util.Date;
 import java.util.Properties;
 
 import org.apache.log4j.PropertyConfigurator;
 import org.openqa.selenium.By;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.io.FileHandler;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
+import com.aventstack.extentreports.Status;
 
 public class BaseTest 
 {
@@ -193,4 +199,38 @@ public class BaseTest
 		return by;
 		
 	}
+	
+	
+	public static boolean islinkEqual(String expectedLink) 
+	{
+		String actualLink = driver.findElement(By.linkText("Best Sellers")).getAttribute("innerHTML");
+		if(expectedLink.equals(actualLink))
+			return true;
+		else 
+			return false;
+	}
+	
+	//Reporting
+	public static void reportFail(String failureMessage) throws Exception 
+	{
+		test.log(Status.FAIL, failureMessage);
+		takesScreenshot();
+	}
+
+	public static void reportPass(String passMessage) 
+	{
+		test.log(Status.PASS, passMessage);
+	}
+	
+	public static void takesScreenshot() throws Exception
+	{
+		Date dt=new Date();
+		System.out.println(dt);
+		String dateFormat=dt.toString().replace(":", "_").replace(" ", "_")+".png";		
+		File scrFile=((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+		FileHandler.copy(scrFile, new File(System.getProperty("user.dir")+"//failurescreenshots//"+dateFormat));
+		
+		test.log(Status.INFO,"Screenshot --->" +test.addScreenCaptureFromPath(System.getProperty("user.dir")+"//failurescreenshots//"+dateFormat));
+	}
+	
 }
