@@ -5,6 +5,7 @@ import org.testng.Assert;
 import org.testng.Reporter;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 import com.aventstack.extentreports.Status;
@@ -15,15 +16,16 @@ public class LinksTesting1 extends BaseTest
 {
 	
 	@BeforeMethod
-	public void setup() throws Exception
+	@Parameters("browser")
+	public void setup(String btype) throws Exception
 	{
 		System.out.println("startProcess");
 	    init();
 		test = report.createTest("LinksTesting1");
 		test.log(Status.PASS, "Initiating the Property Files...");
 				
-		launch("chromebrowser");
-		test.log(Status.INFO, "Opened the Browser :- " + p.getProperty("chromebrowser"));
+		launch(btype);
+		test.log(Status.INFO, "Opened the Browser :- " + btype);
 						
 		navigateUrl("googleurl");
 		test.log(Status.PASS, "Navigated to app :-" + childprop.getProperty("googleurl"));

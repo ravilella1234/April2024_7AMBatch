@@ -7,6 +7,7 @@ import com.aventstack.extentreports.Status;
 import selenium.BaseTest;
 
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Parameters;
 import org.testng.annotations.AfterMethod;
 
 public class TNG_002 extends BaseTest
@@ -14,15 +15,16 @@ public class TNG_002 extends BaseTest
   
   
   @BeforeMethod
-  public void beforeMethod() throws Exception 
+  @Parameters("browser")
+  public void beforeMethod(String btype) throws Exception 
   {
 	  System.out.println("beforeMethod");
 	    init();
 		test = report.createTest("TNG_002");
 		test.log(Status.INFO, "init the properties files.....");
 		
-		launch("chromebrowser");
-		test.log(Status.PASS, "opened the Browser :"+ p.getProperty("chromebrowser"));
+		launch(btype);
+		test.log(Status.PASS, "opened the Browser :"+ btype);
 		
 		navigateUrl("amazonurl");
 		test.log(Status.PASS, "Navigated to application : "+ childprop.getProperty("amazonurl"));

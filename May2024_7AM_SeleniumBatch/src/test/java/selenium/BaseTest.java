@@ -68,11 +68,11 @@ public class BaseTest
 	
 	public static void launch(String browser)
 	{
-		if(p.getProperty(browser).equals("chrome")) {
+		if(browser.equals("chrome")) {
 			driver = new ChromeDriver();
-		}else if (p.getProperty(browser).equalsIgnoreCase("firefox")) {
+		}else if (browser.equalsIgnoreCase("firefox")) {
 			driver = new FirefoxDriver();
-		}else if (p.getProperty(browser).equals("edge")) {
+		}else if (browser.equals("edge")) {
 			driver =  new EdgeDriver();
 		}
 	}
