@@ -14,7 +14,7 @@ public class TNG_002 extends BaseTest
 {
   
   
-  @BeforeMethod
+  @BeforeMethod(groups = {"regression","sanity"})
   @Parameters("browser")
   public void beforeMethod(String btype) throws Exception 
   {
@@ -30,7 +30,7 @@ public class TNG_002 extends BaseTest
 		test.log(Status.PASS, "Navigated to application : "+ childprop.getProperty("amazonurl"));
   }
 
-  @Test
+  @Test(groups = {"regression","sanity"})
   public void amazon() 
   {
 	  System.out.println("amazon");
@@ -45,7 +45,7 @@ public class TNG_002 extends BaseTest
   }
   
   
-  @AfterMethod
+  @AfterMethod(groups = {"regression","sanity"})
   public void afterMethod() 
   {
 	  System.out.println("afterMethod");
