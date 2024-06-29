@@ -11,7 +11,7 @@ public class OneTestValueToAnotherTest
   {
 	  String id = "RRR999";
 	  System.out.println("From f1 : " + id);
-	  context.setAttribute("idValue", id);
+	  context.setAttribute("id Value", id);
   }
   
   @Test
