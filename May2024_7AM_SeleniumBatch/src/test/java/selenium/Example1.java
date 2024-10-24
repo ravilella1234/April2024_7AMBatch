@@ -15,8 +15,10 @@ public class Example1
 		WebDriver driver = new ChromeDriver();
 		driver.manage().window().maximize();
 		driver.get("https://money.rediff.com/gainers");
-		//String price = driver.findElement(By.xpath("//table[@class='dataTable']/tbody/tr[11]/td[4]")).getText();
-		String price = driver.findElement(By.xpath("//a[contains(text(),'South India Pape')]/parent::*/following-sibling::td[3]")).getText();
+		
+		
+		String price = driver.findElement(By.xpath("//table[@class='dataTable']/tbody/tr[8]/td[4]")).getText();
+		//String price = driver.findElement(By.xpath("//a[contains(text(),'Deepak Fertilisers')]/parent::*/following-sibling::td[3]")).getText();
 		System.out.println(price);
 		
 	}

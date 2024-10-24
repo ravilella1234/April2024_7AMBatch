@@ -19,12 +19,12 @@ public class Example2
 		WebDriver driver = new ChromeDriver();
 		driver.manage().window().maximize();
 		driver.get("https://datatables.net/examples/advanced_init/dt_events.html");
-		int pageMaxsize = driver.findElements(By.cssSelector("div[class='dt-paging paging_full_numbers']>button")).size();
+		int pageMaxsize = driver.findElements(By.cssSelector("div[class='dt-paging']>nav>button")).size();
 		System.out.println(pageMaxsize);
 		
-		for(int i=3;i<=8;i++)
+		for(int i=2;i<=8;i++)
 		{
-			String pageselector = "div[class='dt-paging paging_full_numbers']>button:nth-child("+i+")";
+			String pageselector = "div[class='dt-paging']>nav>button:nth-child("+i+")";
 			driver.findElement(By.cssSelector(pageselector)).click();
 			
 			List<WebElement> elementNames = driver.findElements(By.cssSelector("table#example>tbody>tr>td:nth-child(1)"));
